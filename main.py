@@ -23,6 +23,11 @@ def main():
   player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
   while True:
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_ESCAPE]:
+      print("Player closed the game")
+      sys.exit(0)
+      
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         return
