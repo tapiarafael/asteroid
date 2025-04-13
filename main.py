@@ -38,6 +38,7 @@ def main():
 
     updatable.update(dt)
     check_asteroid_colisions(asteroids, player)
+    check_bullets_colision(shoots, asteroids)
 
     pygame.display.flip()
     dt = clock.tick(60) / 1000
@@ -47,7 +48,14 @@ def check_asteroid_colisions(asteroids, player):
       if asteroid.colide(player):
         print("Game Over!")
         sys.exit(0)
-  
+
+def check_bullets_colision(shoots, asteriods):
+  for asteroid in asteriods:
+    for shoot in shoots:
+      if shoot.colide(asteroid):
+        asteroid.kill()
+        shoot.kill()
+
 def print_start_info():
   print("Starting Asteroids!")
   print(f"Screen width: {SCREEN_WIDTH}")
