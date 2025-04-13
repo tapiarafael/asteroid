@@ -27,7 +27,7 @@ def main():
     if keys[pygame.K_ESCAPE]:
       print("Player closed the game")
       sys.exit(0)
-      
+
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         return
@@ -37,13 +37,16 @@ def main():
       sprite.draw(screen)
 
     updatable.update(dt)
+    check_asteroid_colisions(asteroids, player)
+
+    pygame.display.flip()
+    dt = clock.tick(60) / 1000
+
+def check_asteroid_colisions(asteroids, player):
     for asteroid in asteroids:
       if asteroid.colide(player):
         print("Game Over!")
         sys.exit(0)
-
-    pygame.display.flip()
-    dt = clock.tick(60) / 1000
   
 def print_start_info():
   print("Starting Asteroids!")
