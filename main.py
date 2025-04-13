@@ -53,7 +53,7 @@ def check_bullets_colision(shoots, asteriods):
   for asteroid in asteriods:
     for shoot in shoots:
       if shoot.colide(asteroid):
-        asteroid.kill()
+        asteroid.split()
         shoot.kill()
 
 def print_start_info():
